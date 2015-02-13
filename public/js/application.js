@@ -1,8 +1,9 @@
 var board;
 
-function Cell(x, y) {
+function Cell(x, y, value) {
   this.x = x;
   this.y = y;
+  this.value = value;
 }
 
 function Board() {
@@ -11,10 +12,10 @@ function Board() {
 
   // Populated board with empty cells
   this.cells = []
-  for(var i = 0; i < this.size; i++) {
-    this.cells[i] = []
-    for(var j = 0; j < this.size; j++) {
-      this.cells[i][j] = 0;
+  for(var y = 0; y < this.size; y++) {
+    this.cells[y] = []
+    for(var x = 0; x < this.size; x++) {
+      this.cells[y][x] = new Cell(x, y, 0);
     }
   }
 }
