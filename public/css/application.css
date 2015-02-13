@@ -1,0 +1,19 @@
+#content {
+  width: 400px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#header {
+  height: 150px;
+  background-color: #eee;
+}
+
+#game {
+  height: 400px;
+  background-color: #eee;
+}
+
+#cell {
+  position: relative;
+}
