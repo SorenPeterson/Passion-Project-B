@@ -1,3 +1,7 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 #content {
   width: 400px;
   margin: auto;

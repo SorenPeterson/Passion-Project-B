@@ -20,6 +20,10 @@ function Board() {
   }
 }
 
+Board.prototype.display = function() {
+
+}
+
 Board.prototype.placeNewNumber = function() {
   // Gather all locations of empty cells
 }
