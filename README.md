@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -29,3 +30,7 @@ We would love for you to help make the skeleton more awesome, There are three wa
 3. Code review an open pull request!
 
 Be prepared to give and receive specific, actionable, and kind feedback!
+=======
+2048 Squirrels.
+This project will be a copy of the game 2048 but with a slight twist. It's going to be squirrel themed!
+>>>>>>> 3f2affe7c78afc7c2cd01a5c45024929e4101f05

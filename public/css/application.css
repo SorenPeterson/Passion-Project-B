@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 div#game {
   border: 1px solid black;
   width: 640px;
@@ -7,3 +8,51 @@ div#game {
 img#llama {
 
 }
+=======
+body {
+  /*font-family: 'Source Sans Pro', sans-serif;*/
+}
+
+#content {
+  width: 400px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#header {
+  height: 150px;
+  background-color: #eee;
+}
+
+#game {
+  position: relative;
+  height: 400px;
+  background-color: #eee;
+}
+
+#cell-template {
+  display: none;
+}
+
+.cell {
+  position: absolute;
+  margin: 5px;
+  width: 90px;
+  height: 90px;
+
+  border-radius: 10px;
+  background-color: #aaa;
+
+  text-align: center;
+
+  box-shadow: 2px 2px 0px black;
+}
+
+.cell-value {
+  position: relative;
+  font-size: 2em;
+  top: 30px;
+
+  text-shadow: 1px 1px 0px white;
+}
+>>>>>>> 3f2affe7c78afc7c2cd01a5c45024929e4101f05
