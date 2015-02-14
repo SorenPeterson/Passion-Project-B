@@ -23,6 +23,8 @@ Cell.prototype.display = function() {
   } else {
     this.html.show();
   }
+
+  this.html.css("background-color", "#A" + Math.log2(this.value)*2 + Math.log2(this.value)*2);
 }
 
 function Board() {
@@ -152,6 +154,7 @@ function solveRow(row) {
   var new_row = [];
   var reversed = [];
   var positions = [];
+  var score = 0;
 
   // for(var position in positions) {
   //   row[position].x = positions[position].x;
@@ -162,6 +165,8 @@ function solveRow(row) {
     if(last_value === row[cell].value && last_value === new_row.last()) {
       new_row[new_row.length - 1] = new_row.last() * 2;
       last_value = row[cell].value;
+
+      score += new_row.last();
     } else if(row[cell].value !== 0) {
       new_row.push(row[cell].value);
       last_value = row[cell].value;
@@ -181,6 +186,8 @@ function solveRow(row) {
   for(var i = 0; i < 4; i++) {
     row[i].value = reversed[i];
   }
+
+  $("#header").find("#score").text($("#header").find("#score").text() * 1 + score);
 }
 
 $(document).ready(function() {
@@ -192,24 +199,36 @@ $(document).ready(function() {
         board.left();
         if(board.changed()) {
           board.placeNewNumber();
+        } else if(board.emptyCells().length === 0) {
+          alert("Thanks for playing!");
+          board.reset();
         }
         break;
       case 38:
         board.up();
         if(board.changed()) {
           board.placeNewNumber();
+        } else if(board.emptyCells().length === 0) {
+          alert("Thanks for playing!");
+          board.reset();
         }
         break;
       case 39:
         board.right();
         if(board.changed()) {
           board.placeNewNumber();
+        } else if(board.emptyCells().length === 0) {
+          alert("Thanks for playing!");
+          board.reset();
         }
         break;
       case 40:
         board.down();
         if(board.changed()) {
           board.placeNewNumber();
+        } else if(board.emptyCells().length === 0) {
+          alert("Thanks for playing!");
+          board.reset();
         }
         break;
     }
@@ -218,10 +237,6 @@ $(document).ready(function() {
 
     board.savePreviousState();
 
-    if(board.emptyCells().length === 0) {
-      alert("Thanks for playing!");
-      board.reset();
-    }
   });
 });
 
