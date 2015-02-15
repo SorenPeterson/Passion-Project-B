@@ -88,6 +88,34 @@ function solveRow(row) {
   var last_value;
   var new_row = [];
   var reversed = [];
+  var positions = [];
+
+  var sorting_zeros = [];
+  var sorting_others = [];
+  while(row.length > 0) {
+    var cell = row.shift();
+    positions.push({x: cell.x, y: cell.y});
+    if(cell.value === 0) {
+      sorting_zeros.push(cell);
+    } else {
+      sorting_others.push(cell);
+    }
+  }
+
+  console.log(row);
+
+  var sorting_counter = 0;
+  while(sorting_zeros.length > 0) {
+    row.push(sorting_zeros.shift());
+  }
+  while(sorting_others.length > 0) {
+    row.push(sorting_others.shift());
+  }
+
+  for(var position in positions) {
+    row[position].x = positions[position].x;
+    row[position].y = positions[position].y;
+  }
 
   for(var cell = 3; cell >= 0; cell--) {
     if(last_value === row[cell].value && last_value === new_row.last()) {
@@ -98,15 +126,19 @@ function solveRow(row) {
     last_value = row[cell].value;
   }
 
+  // Add empty space because the algorithm above doesn't add in empty spaces. We can always assume that empty space will only be at the end.
   while(new_row.length < 4) {
     new_row.push(0);
   }
 
+  // Reverses the array because the algorithm returns it in the wrong order.
   for(var i = new_row.length-1; i >= 0; i--) {
     reversed.push(new_row[i]);
   }
 
-  return reversed;
+  for(var i = 0; i < 4; i++) {
+    row[i].value = reversed[i];
+  }
 }
 
 $(document).ready(function() {
