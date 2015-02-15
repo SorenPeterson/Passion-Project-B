@@ -14,10 +14,23 @@ body {
 }
 
 #game {
+  position: relative;
   height: 400px;
   background-color: #eee;
 }
 
-#cell {
+#cell-template {
+  display: none;
+}
+
+.cell {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #aaa;
+}
+
+.cell-value {
   position: relative;
+  top: 50px;
 }
