@@ -69,16 +69,30 @@ Board.prototype.placeNewNumber = function() {
 }
 
 Board.prototype.up = function() {
-
+  for(var x = 0; x < this.size; x++) {
+    var row_to_solve = [];
+    for(var y = this.size-1; y >= 0; y--) {
+      row_to_solve.push(this.cells[y][x]);
+    }
+    solveRow(row_to_solve);
+  }
+  this.display();
 }
 
 Board.prototype.down = function() {
-
+  for(var x = 0; x < this.size; x++) {
+    var row_to_solve = [];
+    for(var y = 0; y < this.size; y++) {
+      row_to_solve.push(this.cells[y][x]);
+    }
+    solveRow(row_to_solve);
+  }
+  this.display();
 }
 
 Board.prototype.left = function() {
   for(var y = 0; y < this.size; y++) {
-    var row_to_solve = []
+    var row_to_solve = [];
     for(var x = this.size-1; x >= 0; x--) {
       row_to_solve.push(this.cells[y][x]);
     }
