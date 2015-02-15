@@ -34,8 +34,8 @@ function Board() {
 }
 
 Board.prototype.display = function() {
-  for(var x = 0; x < 4; x++) {
-    for(var y = 0; y < 4; y++) {
+  for(var y = 0; y < 4; y++) {
+    for(var x = 0; x < 4; x++) {
       this.cells[y][x].display();
     }
   }
@@ -43,8 +43,19 @@ Board.prototype.display = function() {
 
 Board.prototype.placeNewNumber = function() {
   var empty_cells = []
+  var cell_index;
 
   // Gather all locations of empty cells
+  for(var y = 0; y < 4; y++) {
+    for(var x = 0; x < 4; x++) {
+      var this_cell = this.cells[y][x]
+      if(this_cell.value === 0) {
+        empty_cells.push(this_cell);
+      }
+    }
+  }
+
+  cell_index = Math.floor((Math.random() * empty_cells.length));
 }
 
 Board.prototype.up = function() {
@@ -58,6 +69,5 @@ Board.prototype.down = function() {
 
 
 $(document).ready(function() {
-  console.log('creating le board');
   board = new Board();
 });
