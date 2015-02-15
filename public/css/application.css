@@ -25,12 +25,14 @@ body {
 
 .cell {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  margin: 5px;
+  width: 90px;
+  height: 90px;
+
+  border-radius: 10px;
   background-color: #aaa;
 }
 
 .cell-value {
   position: relative;
-  top: 50px;
 }

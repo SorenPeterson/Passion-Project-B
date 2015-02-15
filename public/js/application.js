@@ -34,10 +34,16 @@ function Board() {
 }
 
 Board.prototype.display = function() {
-
+  for(var x = 0; x < 4; x++) {
+    for(var y = 0; y < 4; y++) {
+      this.cells[y][x].display();
+    }
+  }
 }
 
 Board.prototype.placeNewNumber = function() {
+  var empty_cells = []
+
   // Gather all locations of empty cells
 }
 
