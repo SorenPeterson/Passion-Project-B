@@ -134,11 +134,6 @@ function solveRow(row) {
   //   row.push(sorting_others.shift());
   // }
 
-  console.log(row[0].x);
-  console.log(row[1].x);
-  console.log(row[2].x);
-  console.log(row[3].x);
-
   for(var position in positions) {
     row[position].x = positions[position].x;
     row[position].y = positions[position].y;
