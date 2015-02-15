@@ -87,6 +87,8 @@ Board.prototype.right = function() {
 function solveRow(row) {
   var last_value;
   var new_row = [];
+  var reversed = [];
+
   for(var cell = 3; cell >= 0; cell--) {
     if(last_value === row[cell].value && last_value === new_row.last()) {
       new_row[new_row.length - 1] = new_row.last() * 2;
@@ -95,7 +97,16 @@ function solveRow(row) {
     }
     last_value = row[cell].value;
   }
-  return new_row;
+
+  while(new_row.length < 4) {
+    new_row.push(0);
+  }
+
+  for(var i = new_row.length-1; i >= 0; i--) {
+    reversed.push(new_row[i]);
+  }
+
+  return reversed;
 }
 
 $(document).ready(function() {
