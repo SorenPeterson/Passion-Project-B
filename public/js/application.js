@@ -114,26 +114,6 @@ function solveRow(row) {
   var reversed = [];
   var positions = [];
 
-  // var sorting_zeros = [];
-  // var sorting_others = [];
-  // while(row.length > 0) {
-  //   var cell = row.shift();
-  //   positions.push({x: cell.x, y: cell.y});
-  //   if(cell.value === 0) {
-  //     sorting_zeros.push(cell);
-  //   } else {
-  //     sorting_others.push(cell);
-  //   }
-  // }
-
-  // var sorting_counter = 0;
-  // while(sorting_zeros.length > 0) {
-  //   row.push(sorting_zeros.shift());
-  // }
-  // while(sorting_others.length > 0) {
-  //   row.push(sorting_others.shift());
-  // }
-
   for(var position in positions) {
     row[position].x = positions[position].x;
     row[position].y = positions[position].y;
