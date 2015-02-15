@@ -77,11 +77,21 @@ Board.prototype.down = function() {
 }
 
 Board.prototype.left = function() {
-
+  for(var y = 0; y < this.size; y++) {
+    var row_to_solve = []
+    for(var x = this.size-1; x >= 0; x--) {
+      row_to_solve.push(this.cells[y][x]);
+    }
+    solveRow(row_to_solve);
+  }
+  this.display();
 }
 
 Board.prototype.right = function() {
-
+  for(var y = 0; y < this.size; y++) {
+    solveRow(this.cells[y]);
+  }
+  this.display();
 }
 
 function solveRow(row) {
@@ -90,27 +100,30 @@ function solveRow(row) {
   var reversed = [];
   var positions = [];
 
-  var sorting_zeros = [];
-  var sorting_others = [];
-  while(row.length > 0) {
-    var cell = row.shift();
-    positions.push({x: cell.x, y: cell.y});
-    if(cell.value === 0) {
-      sorting_zeros.push(cell);
-    } else {
-      sorting_others.push(cell);
-    }
-  }
+  // var sorting_zeros = [];
+  // var sorting_others = [];
+  // while(row.length > 0) {
+  //   var cell = row.shift();
+  //   positions.push({x: cell.x, y: cell.y});
+  //   if(cell.value === 0) {
+  //     sorting_zeros.push(cell);
+  //   } else {
+  //     sorting_others.push(cell);
+  //   }
+  // }
 
-  console.log(row);
+  // var sorting_counter = 0;
+  // while(sorting_zeros.length > 0) {
+  //   row.push(sorting_zeros.shift());
+  // }
+  // while(sorting_others.length > 0) {
+  //   row.push(sorting_others.shift());
+  // }
 
-  var sorting_counter = 0;
-  while(sorting_zeros.length > 0) {
-    row.push(sorting_zeros.shift());
-  }
-  while(sorting_others.length > 0) {
-    row.push(sorting_others.shift());
-  }
+  console.log(row[0].x);
+  console.log(row[1].x);
+  console.log(row[2].x);
+  console.log(row[3].x);
 
   for(var position in positions) {
     row[position].x = positions[position].x;
