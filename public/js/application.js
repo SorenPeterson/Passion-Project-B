@@ -133,10 +133,11 @@ function solveRow(row) {
   for(var cell = 3; cell >= 0; cell--) {
     if(last_value === row[cell].value && last_value === new_row.last()) {
       new_row[new_row.length - 1] = new_row.last() * 2;
+      last_value = row[cell].value;
     } else if(row[cell].value !== 0) {
       new_row.push(row[cell].value);
+      last_value = row[cell].value;
     }
-    last_value = row[cell].value;
   }
 
   // Add empty space because the algorithm above doesn't add in empty spaces. We can always assume that empty space will only be at the end.
