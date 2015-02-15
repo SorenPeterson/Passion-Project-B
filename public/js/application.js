@@ -11,8 +11,9 @@ function Cell(x, y, value) {
 }
 
 Cell.prototype.display = function() {
-  this.html.css("top", this.y * CELL_SIZE)
-  this.html.css("left", this.x * CELL_SIZE)
+  this.html.css("top", this.y * CELL_SIZE);
+  this.html.css("left", this.x * CELL_SIZE);
+  this.html.find(".cell-value").text(this.value);
 }
 
 function Board() {
@@ -44,6 +45,7 @@ Board.prototype.display = function() {
 Board.prototype.placeNewNumber = function() {
   var empty_cells = []
   var cell_index;
+  var new_value;
 
   // Gather all locations of empty cells
   for(var y = 0; y < 4; y++) {
@@ -56,6 +58,9 @@ Board.prototype.placeNewNumber = function() {
   }
 
   cell_index = Math.floor((Math.random() * empty_cells.length));
+  new_value = Math.floor(Math.random() * 2) * 2 + 2;
+  empty_cells[cell_index].value = new_value;
+  empty_cells[cell_index].display();
 }
 
 Board.prototype.up = function() {
