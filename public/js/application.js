@@ -76,7 +76,6 @@ Board.prototype.up = function() {
     }
     solveRow(row_to_solve);
   }
-  this.display();
 }
 
 Board.prototype.down = function() {
@@ -87,7 +86,6 @@ Board.prototype.down = function() {
     }
     solveRow(row_to_solve);
   }
-  this.display();
 }
 
 Board.prototype.left = function() {
@@ -98,14 +96,12 @@ Board.prototype.left = function() {
     }
     solveRow(row_to_solve);
   }
-  this.display();
 }
 
 Board.prototype.right = function() {
   for(var y = 0; y < this.size; y++) {
     solveRow(this.cells[y]);
   }
-  this.display();
 }
 
 function solveRow(row) {
@@ -146,6 +142,27 @@ function solveRow(row) {
 
 $(document).ready(function() {
   board = new Board();
+  $(document).keyup(function(event) {
+    switch(event.keyCode) {
+      case 37:
+        board.left();
+        board.placeNewNumber();
+        break;
+      case 38:
+        board.up();
+        board.placeNewNumber();
+        break;
+      case 39:
+        board.right();
+        board.placeNewNumber();
+        break;
+      case 40:
+        board.down();
+        board.placeNewNumber();
+        break;
+    }
+    board.display()
+  });
 });
 
 // DANGER WILL ROBINSON MONKEY PATCHING ABOUNDS
