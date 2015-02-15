@@ -14,6 +14,11 @@ Cell.prototype.display = function() {
   this.html.css("top", this.y * CELL_SIZE);
   this.html.css("left", this.x * CELL_SIZE);
   this.html.find(".cell-value").text(this.value);
+  if(this.value === 0) {
+    this.html.hide();
+  } else {
+    this.html.show();
+  }
 }
 
 function Board() {
@@ -71,7 +76,13 @@ Board.prototype.down = function() {
 
 }
 
+Board.prototype.left = function() {
 
+}
+
+Board.prototype.right = function() {
+
+}
 
 $(document).ready(function() {
   board = new Board();
