@@ -88,7 +88,6 @@ function solveRow(row) {
   var last_value;
   var new_row = [];
   for(var cell = 3; cell >= 0; cell--) {
-    console.log(last_value, row[cell].value, new_row.last());
     if(last_value === row[cell].value && last_value === new_row.last()) {
       new_row[new_row.length - 1] = new_row.last() * 2;
     } else if(row[cell].value !== 0) {
