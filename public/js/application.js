@@ -11,8 +11,12 @@ function Cell(x, y, value) {
 }
 
 Cell.prototype.display = function() {
-  this.html.css("top", this.y * CELL_SIZE);
-  this.html.css("left", this.x * CELL_SIZE);
+  // this.html.css("top", this.y * CELL_SIZE);
+  // this.html.css("left", this.x * CELL_SIZE);
+  this.html.animate({
+    top: this.y * CELL_SIZE,
+    left: this.x * CELL_SIZE
+  }, 1000);
   this.html.find(".cell-value").text(this.value);
   if(this.value === 0) {
     this.html.hide();
@@ -142,6 +146,7 @@ function solveRow(row) {
 
 $(document).ready(function() {
   board = new Board();
+  board.placeNewNumber();
   $(document).keyup(function(event) {
     switch(event.keyCode) {
       case 37:
