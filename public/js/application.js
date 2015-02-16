@@ -114,10 +114,10 @@ function solveRow(row) {
   var reversed = [];
   var positions = [];
 
-  for(var position in positions) {
-    row[position].x = positions[position].x;
-    row[position].y = positions[position].y;
-  }
+  // for(var position in positions) {
+  //   row[position].x = positions[position].x;
+  //   row[position].y = positions[position].y;
+  // }
 
   for(var cell = 3; cell >= 0; cell--) {
     if(last_value === row[cell].value && last_value === new_row.last()) {
