@@ -31,11 +31,12 @@ body {
 
   border-radius: 10px;
   background-color: #aaa;
+
+  text-align: center;
 }
 
 .cell-value {
-  display: inline-block;
   position: relative;
   font-size: 2em;
-  margin: auto;
+  top: 30px;
 }
