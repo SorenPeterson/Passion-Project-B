@@ -41,6 +41,39 @@ function Board() {
       this.cells[y][x].display();
     }
   }
+
+  this.last_state = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+
+  this.savePreviousState();
+}
+
+Board.prototype.changed = function() {
+  for(var y = 0; y < this.size; y++) {
+    for(var x = 0; x < this.size; x++) {
+      if(this.last_state[y][x] != this.cells[y][x].value) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+Board.prototype.savePreviousState = function() {
+  for(var y = 0; y < this.size; y++) {
+    for(var x = 0; x < this.size; x++) {
+      this.last_state[y][x] = this.cells[y][x].value;
+    }
+  }
+}
+
+Board.prototype.reset = function() {
+  for(var y = 0; y < 4; y++) {
+    for(var x = 0; x < 4; x++) {
+      this.cells[y][x].value = 0;
+    }
+  }
+  this.placeNewNumber();
+  this.display();
 }
 
 Board.prototype.display = function() {
@@ -51,10 +84,8 @@ Board.prototype.display = function() {
   }
 }
 
-Board.prototype.placeNewNumber = function() {
-  var empty_cells = []
-  var cell_index;
-  var new_value;
+Board.prototype.emptyCells = function() {
+  var empty_cells = [];
 
   // Gather all locations of empty cells
   for(var y = 0; y < 4; y++) {
@@ -65,6 +96,14 @@ Board.prototype.placeNewNumber = function() {
       }
     }
   }
+
+  return empty_cells;
+}
+
+Board.prototype.placeNewNumber = function() {
+  var empty_cells = this.emptyCells();
+  var cell_index;
+  var new_value;
 
   cell_index = Math.floor((Math.random() * empty_cells.length));
   new_value = Math.floor(Math.random() * 2) * 2 + 2;
@@ -151,22 +190,38 @@ $(document).ready(function() {
     switch(event.keyCode) {
       case 37:
         board.left();
-        board.placeNewNumber();
+        if(board.changed()) {
+          board.placeNewNumber();
+        }
         break;
       case 38:
         board.up();
-        board.placeNewNumber();
+        if(board.changed()) {
+          board.placeNewNumber();
+        }
         break;
       case 39:
         board.right();
-        board.placeNewNumber();
+        if(board.changed()) {
+          board.placeNewNumber();
+        }
         break;
       case 40:
         board.down();
-        board.placeNewNumber();
+        if(board.changed()) {
+          board.placeNewNumber();
+        }
         break;
     }
+
     board.display()
+
+    board.savePreviousState();
+
+    if(board.emptyCells().length === 0) {
+      alert("Thanks for playing!");
+      board.reset();
+    }
   });
 });
 
